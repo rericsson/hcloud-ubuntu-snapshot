@@ -7,7 +7,8 @@
         "type": "chef-solo",
           "cookbook_paths": ["cookbooks"],
           "run_list": [
-            "recipe[server::default]",
+            "recipe[server::haveged]",
+            "recipe[server::auditd]",
             "recipe[os-hardening::default]"
           ]
     },
