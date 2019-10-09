@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "hcloud_token": "{{env `HCLOUD_TOKEN`}}"
+  },
+  "provisioners": [
+    {
+        "type": "chef-solo",
+          "cookbook_paths": ["cookbooks"],
+          "run_list": [
+            "recipe[server::default]",
+            "recipe[os-hardening::default]"
+          ]
+    },
+    {
+       "type": "inspec",
+       "profile": "https://github.com/dev-sec/linux-baseline",
+       "extra_arguments": ["--no-distinct-exit"]
+    }
+ ],
+
+  "builders": [{
+    "type": "hcloud",
+    "token": "{{user `hcloud_token`}}",
+    "image": "ubuntu-18.04",
+    "location": "nbg1",
+    "server_type": "cx11",
+    "ssh_username": "root"
+  }]
+}
+
