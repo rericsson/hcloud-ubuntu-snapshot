@@ -15,7 +15,8 @@
     {
        "type": "inspec",
        "profile": "https://github.com/dev-sec/linux-baseline",
-       "extra_arguments": ["--no-distinct-exit"]
+       "extra_arguments": ["--no-distinct-exit"],
+       "inspec_env_vars": ["CHEF_LICENSE=accept"]
     }
  ],
 
